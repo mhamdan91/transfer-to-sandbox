@@ -32,7 +32,7 @@ jobs:
           signoff: false
           branch: example-patches1
           delete-branch: true
-          title: '[Example] Update report'
+          title: '[Example] Update report2'
           body: |
             Update report
             - Updated with *today's* date
@@ -48,7 +48,22 @@ jobs:
             maintainers
           milestone: 1
           draft: false
+          
+      - name: Enable Pull Request Automerge
+        if: steps.cpr.outputs.pull-request-operation == 'created'
+        uses: peter-evans/enable-pull-request-automerge@v1
+        with:
+          token: ${{ secrets.INVENTORY_CONF_GITHUB_PASSWORD }}
+          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
+          merge-method: squash
 
+      - name: Auto approve
+        if: steps.cpr.outputs.pull-request-operation == 'created'
+        uses: juliangruber/approve-pull-request-action@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          number: ${{ steps.cpr.outputs.pull-request-number }}
+          
       - name: Check outputs
         run: |
           echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
