@@ -41,6 +41,11 @@ jobs:
           labels: |
             report
             automated pr
+          assignees: mhamdan91
+          reviewers: mhamdan91
+          team-reviewers: |
+            owners
+            maintainers
           draft: false
           
       - name: Enable Pull Request Automerge
