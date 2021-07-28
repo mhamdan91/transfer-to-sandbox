@@ -6,7 +6,7 @@ name: Org Audit
 # Controls when the workflow will run
 on:
   schedule:
-    - cron:  '35 16 * * *'  # run once a day at 23:00 PM UTC (PST 16:00 PM), only US region working hour
+    - cron:  '0 16 * * *'  # run once a day at 23:00 PM UTC (PST 16:00 PM), only US region working hour
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -41,8 +41,8 @@ jobs:
           labels: |
             report
             automated pr
-          assignees: peter-evans
-          reviewers: peter-evans
+          assignees: mhamdan91
+          reviewers: mhamdan91
           team-reviewers: |
             owners
             maintainers
