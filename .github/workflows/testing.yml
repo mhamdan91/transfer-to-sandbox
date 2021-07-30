@@ -25,7 +25,6 @@ jobs:
         run: echo Hello, world!
 
       - name: Is Auditor Pull Request
-        if: true
         env: 
           AUDITOR_MERGE: true
       # Runs a set of commands using the runners shell
@@ -33,5 +32,3 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-      - name: Test Merge
-        run: echo "i am here
