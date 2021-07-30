@@ -34,5 +34,5 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
       - name: Test Merge
-        if: ${AUDITOR_MERGE}
+        if: true
         run: echo "i am here
