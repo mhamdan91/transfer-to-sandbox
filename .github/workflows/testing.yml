@@ -25,12 +25,12 @@ jobs:
         run: echo Hello, world!
 
       - name: Is Auditor Pull Request
-        env: 
-          AUDITOR_MERGE: merge
         run: echo "bitch"
+        env: 
+          AUDITOR_MERGE: Mer
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
-        if: ${{ env.AUDITOR_MERGE == 'merge' }}
+        if: ${{ env.AUDITOR_MERGE == 'Mer' }}
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
