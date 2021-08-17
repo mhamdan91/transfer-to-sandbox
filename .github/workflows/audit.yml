@@ -24,7 +24,7 @@ jobs:
         run: |
           git config --global user.name "Mhamdan"
           git config --global user.email "mhamdan-91@hotmail.com"
-          git clone https://github.com/mhamdan91/mirroring.git
+          git clone git@github.com:mhamdan91/mirroring.git
           cp report.txt mirroring/report.txt
           cd mirroring
           git add .
