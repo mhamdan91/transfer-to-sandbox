@@ -24,7 +24,7 @@ jobs:
         run: |
           git clone https://github.com/mhamdan91/mirroring.git
           cp report.txt mirroring/report.txt
-          cd moe-test2
+          cd mirroring
           git add .
           git commit -m 'Adding report.txt'
           git push
