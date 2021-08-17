@@ -22,7 +22,7 @@ jobs:
         run: date +%s > report.txt
       - name: Push file to remote repo
         run: |
-          git clone https://mhamdan91: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:x-oauth-basic@github.com/mhamdan91/mirroring.git
+          git clone https://github.com/mhamdan91/mirroring.git
           cp report.txt mirroring/report.txt
           cd moe-test2
           git add .
