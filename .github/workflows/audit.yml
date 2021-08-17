@@ -22,6 +22,8 @@ jobs:
         run: date +%s > report.txt
       - name: Push file to remote repo
         run: |
+          git config --local user.name 'GitHub Actions Bot'
+          git config --local user.email 'actions@github.com'
           git clone https://github.com/mhamdan91/mirroring.git
           cp report.txt mirroring/report.txt
           cd mirroring
