@@ -16,8 +16,9 @@ _sleep(65)
 
 def _get_rate_limit():
     token = 1
-    headers = {"Accept": "application/vnd.github.v3+json", "Authorization": "Bearer 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"}
+    headers = {"Accept": "application/vnd.github.v3+json", "Authorization": "Bearer "}
     r = requests.get('https://api.github.com/rate_limit')
     r_data = json.loads(r.text)['resources']['core']
     return r_data['used'], r_data['remaining'], r_data['reset']
 print(_get_rate_limit())
+print('Command line arguments:', str(sys.argv))
