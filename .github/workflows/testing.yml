@@ -22,7 +22,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run python script
-        run: python test.py
+        run: python test.py ${{ secrets.TOKEN }}
 
       - name: Is Auditor Pull Request
         run: echo "Auditor"
