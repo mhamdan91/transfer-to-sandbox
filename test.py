@@ -1,6 +1,7 @@
 import time, sys
 import logging
 import json
+import requests
 log = logging.getLogger(__name__)
 def _sleep(sleep_time: int) -> None:
     while sleep_time > 0:
