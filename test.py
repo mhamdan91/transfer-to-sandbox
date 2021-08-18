@@ -1,5 +1,6 @@
 import time, sys
 import logging
+import json
 log = logging.getLogger(__name__)
 def _sleep(sleep_time: int) -> None:
     while sleep_time > 0:
@@ -12,7 +13,7 @@ def _sleep(sleep_time: int) -> None:
         print(f"{sleep_time} remaining seconds before resuming auditing......")
 _sleep(65)
 
-def _get_rate_limit(self) -> typing.Tuple[int, int, int]:
+def _get_rate_limit():
     token = 1
     headers = {"Accept": "application/vnd.github.v3+json", "Authorization": f"Bearer {token}"}
     r = requests.get('https://api.github.com/rate_limit')
