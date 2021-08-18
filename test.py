@@ -11,3 +11,11 @@ def _sleep(sleep_time: int) -> None:
         log.info("%s remaining seconds before resuming auditing...", sleep_time)
         print(f"{sleep_time} remaining seconds before resuming auditing......")
 _sleep(65)
+
+def _get_rate_limit(self) -> typing.Tuple[int, int, int]:
+    token = 1
+    headers = {"Accept": "application/vnd.github.v3+json", "Authorization": f"Bearer {token}"}
+    r = requests.get('https://api.github.com/rate_limit')
+    r_data = json.loads(r.text)['resources']['core']
+    return r_data['used'], r_data['remaining'], r_data['reset']
+print(_get_rate_limit())
