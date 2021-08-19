@@ -1,0 +1,35 @@
+name: Pull Requests
+
+on:
+  pull_request:
+    branches:
+    - main
+    types:
+    - opened
+    - synchronize
+    - reopened
+  pull_request_review:
+    branches:
+    - main
+
+env:
+  GITHUB_ACTOR: ${{ github.actor }}
+  GITHUB_HEADREF: ${{ github.head_ref }}
+  GITHUB_CONTEXT: ${{ toJson(github) }}
+
+jobs:
+  merge-pull-request:
+    runs-on: ubuntu-latest
+    if: |
+      (github.event_name == 'pull_request_review' && github.event.review.state != 'commented') || 
+      (github.event_name == 'pull_request')
+    steps:
+    - uses: actions/checkout@v2
+    - name: Merge Pull Request
+      if: env.GITHUB_ACTOR == 'github-1source-pre' && env.GITHUB_HEADREF == '1source-auditor'
+      run: |
+        curl \
+        -X PUT \
+        -H "Accept: application/vnd.github.v3+json" \
+        https://token:${{ secrets.INVENTORY_CONF_GITHUB_PASSWORD }}@api.github.com/repos/${{ github.repository_owner }}/inventory/pulls/${{ github.event.number }}/merge \
+        -d '{"commit_title":"Merging Auditor PR into master", "merge_method": "squash"}'
