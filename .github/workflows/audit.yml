@@ -11,6 +11,11 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+env:
+  GITHUB_ACTOR: ${{ github.actor }}
+  GITHUB_HEADREF: ${{ github.head_ref }}
+  GITHUB_CONTEXT: ${{ toJson(github) }}
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   createPullRequest:
@@ -22,7 +27,7 @@ jobs:
         run: |
           date +%s > report.txt
           echo "DIFF_FILES=$(git diff --name-only report.txt | wc -l)" >> $GITHUB_ENV
-          echo "ls"
+          ls
 #       - name: Push file to remote repo
 #         run: |
 #           git config --global user.name "Mhamdan"
