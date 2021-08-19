@@ -28,8 +28,9 @@ jobs:
     - name: Merge Pull Request
       if: env.GITHUB_ACTOR == 'mhamdan91' && env.GITHUB_HEADREF == '1source-auditor'
       run: |
+        echo "$GITHUB_CONTEXT"
         curl \
         -X PUT \
         -H "Accept: application/vnd.github.v3+json" \
-        https://token:${{ secrets.TOKEN }}@api.github.com/repos/${{ github.repository_owner }}/inventory/pulls/${{ github.event.number }}/merge \
+        https://token:${{ secrets.TOKEN }}@api.github.com/repos/${{ github.repository_owner }}/transfer-to-sandbox/pulls/${{ github.event.number }}/merge \
         -d '{"commit_title":"Merging Auditor PR into master", "merge_method": "squash"}'
