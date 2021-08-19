@@ -48,9 +48,9 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: example-patches1
+          branch: 1source-auditor
           delete-branch: true
-          title: '[Example] Update report2'
+          title: 'Audit Repos'
           body: |
             Update report
             - Updated with *today's* date
