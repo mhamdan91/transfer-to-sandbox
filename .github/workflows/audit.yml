@@ -25,6 +25,7 @@ jobs:
   
       - name: Make changes to pull request
         run: |
+          echo ${{ github.actor }}
           date +%s > report.txt
           echo "DIFF_FILES=$(git diff --name-only report.txt | wc -l)" >> $GITHUB_ENV
           ls
