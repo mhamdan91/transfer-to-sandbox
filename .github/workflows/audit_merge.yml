@@ -36,9 +36,9 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: example-patches1
+          branch: 1source-auditor
           delete-branch: true
-          title: '[Example] Update report2'
+          title: 'Audit Repos'
           body: |
             Update report
             - Updated with *today's* date
@@ -63,5 +63,5 @@ jobs:
           curl \
           -X PUT \
           -H "Accept: application/vnd.github.v3+json" \
-          https://token:${{ secrets.TOKEN }}@api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.number }}/merge \
+          https://token:${{ secrets.TOKEN }}@api.github.com/repos/${{ github.repository }}/pulls/${{ steps.cpr.outputs.pull-request-number }}/merge \
           -d '{"commit_title":"Merging Auditor PR into master", "merge_method": "squash"}'
