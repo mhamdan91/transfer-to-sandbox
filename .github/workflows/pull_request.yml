@@ -26,7 +26,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Merge Pull Request
-      if: env.GITHUB_ACTOR == 'github-1source-pre' && env.GITHUB_HEADREF == '1source-auditor'
+      if: env.GITHUB_ACTOR == 'mhamdan91' && env.GITHUB_HEADREF == '1source-auditor'
       run: |
         curl \
         -X PUT \
